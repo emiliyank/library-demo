@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  mysqldb57:
+    image: "mysql:5.7"
+    restart: always
+    ports:
+      - 3307:3307
+    networks:
+      - springapimysql-net
+    environment:
+      MYSQL_DATABASE: db_flyway
+      MYSQL_USER: user1
+      MYSQL_PASSWORD: pass24
+      MYSQL_ROOT_PASSWORD: pass24
+networks:
+  springapimysql-net:

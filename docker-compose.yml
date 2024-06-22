@@ -1,0 +1,29 @@
+version: "3.7"
+services:
+  api_service:
+    build: .
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - springapimysql2-net
+    depends_on:
+      - mysqldb
+
+    volumes:
+      - .m2:/root/.m2
+
+  mysqldb:
+    image: "mysql:8.0"
+    restart: always
+    ports:
+      - 3306:3306
+    networks:
+      - springapimysql2-net
+    environment:
+      MYSQL_DATABASE: basics
+      MYSQL_USER: amila_one
+      MYSQL_PASSWORD: Amila_pw
+      MYSQL_ROOT_PASSWORD: Amila_Rpw
+networks:
+  springapimysql2-net:
